@@ -39002,6 +39002,7 @@ const obj0 =
 {"authorId": 3316, "role": "au*", "paperId": 5141},
 {"authorId": 3329, "role": "au*", "paperId": 5142},
 {"authorId": 3330, "role": "sup*", "paperId": 5143},
+{"authorId": 2352, "role": "au*", "paperId": 5144},
 {"authorId": 3332, "role": "ocau*", "paperId": 5145},
 {"authorId": 3333, "role": "au*", "paperId": 5146},
 {"authorId": 887, "role": "au*", "paperId": 5147},

@@ -61,12 +61,12 @@ function getNames_(id){
   let names = [];//Mdf
   for(let k = 0; k < lgt; ++k){//<2.__________________________________BGN <LOOP.1>
     let entry = obj1[k];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getNames()#2A:k=${k}, entry=`);
       console.dir(entry);
     }//3>
     let id1 = entry['id'];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getNames()#2B:k=${k}, id1=${id1}`);//Dummy  
     }//3>
     if( id1 === id ){//<3
@@ -89,17 +89,19 @@ function getNames(){//<1
 //**********************************************************************
 //On 2024_12_6.
 function getAuthors_(paperId){//<1
-  console.log(`-- getAuthors_()#1B:paperId=${paperId}`);//Dummy
+  if( trcLev >= 2 ){
+    console.log(`-- getAuthors_()#1B:paperId=${paperId}`);//Dummy
+  }
   let lgt = obj3.length;
   let entries = [];//Mdf
   for(let k = 0; k < lgt; ++k){//<2.__________________________________BGN <LOOP.1>
     let entry = obj3[k];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getAuthors_()#2A:k=${k}, entry=`);
       console.dir(entry);
     }//3>
     let paperId1 = entry['paperId'];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getAuthors_()#2B:k=${k}, paperId1=${paperId1}`);//Dummy  
     }//3>
     if( paperId1 === paperId ){//<3
@@ -154,19 +156,19 @@ function detailed3B(){//<1
 }//1>
 //**********************************************************************
 //**********************************************************************
-//On 2024_12_6.
-function detailed2(){//<1
-  let elmId = document.getElementById('paperId');
-  let idTxt = elmId.value;
-  console.log(`-- detailed2()#1:idTxt=${idTxt}`);//Dummy
-  let id = parseInt(idTxt);
+//On 2024_12_7.
+function detailed2_(id){//<1
   let papers = getPaper_(id);//New
-  console.log('-- detailed2()#3:papers=');
-  console.dir(papers);//Ne2
+  if( trcLev >= 2 ){
+    console.log('-- detailed2_()#3:papers=');
+    console.dir(papers);//Ne2
+  }
   let paper = papers[0];//New2
   let paperId = paper.id;//New3
   let authors = getAuthors_(paperId);//New3
-  console.log('-- detailed2()#1:authors='); console.dir(authors);
+  if( trcLev >= 2 ){
+    console.log('-- detailed2_()#1:authors='); console.dir(authors);
+  }
   let htmlText = '';
   htmlText += JSON.stringify(paper)+'<br/>';//New3
   let lgt1 = authors.length;
@@ -177,6 +179,15 @@ function detailed2(){//<1
     htmlText += `authorId：${authorId}，`+JSON.stringify(names)+'<br/>';
   }//>2.______________________________________________________________END <loop.1> 
   elmData2.innerHTML = htmlText;
+}
+//**********************************************************************
+//On 2024_12_6.
+function detailed2(){//<1
+  let elmId = document.getElementById('paperId');
+  let idTxt = elmId.value;
+  console.log(`-- detailed2()#1:idTxt=${idTxt}`);//Dummy
+  let id = parseInt(idTxt);
+  detailed2_(id);//New
 }//1>
 //**********************************************************************
 //On 2024_12_6.
@@ -186,12 +197,12 @@ function getPaper_(id){//<1
   let papers = [];//Mdf
   for(let k = 0; k < lgt; ++k){//<2.__________________________________BGN <LOOP.1>
     let entry = obj2[k];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getPaper_()#2A:k=${k}, entry=`);
       console.dir(entry);
     }//3>
     let id1 = entry['id'];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getPaper_()#2B:k=${k}, id1=${id1}`);//Dummy  
     }//3>
     if( id1 === id ){//<3
@@ -222,12 +233,12 @@ function getNames2_(namePart){//<1
   let entries = [];//Mdf
   for(let k = 0; k < lgt; ++k){//<2.__________________________________BGN <LOOP.1>
     let entry = obj1[k];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getNames2_()#2A:k=${k}, entry=`);
       console.dir(entry);
     }//3>
     let name1 = entry['name'];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getNames2_()#2B:k=${k}, name1=${name1}`);//Dummy  
     }//3>
     if( name1.match(namePart) ){//<3
@@ -263,12 +274,12 @@ function detailedAuthors_(namePart){
   let entries = [];//Mdf
   for(let k = 0; k < lgt; ++k){//<2.__________________________________BGN <LOOP.1>
     let entry = obj1[k];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- detailedAuthors_()#2A:k=${k}, entry=`);
       console.dir(entry);
     }//3>
     let name1 = entry['name'];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- detailedAuthors_()#2B:k=${k}, name1=${name1}`);//Dummy  
     }//3>
     if( name1.match(namePart) ){//<3
@@ -300,28 +311,39 @@ function detailedAuthors(){
 }
 //**********************************************************************
 //**********************************************************************
+//On 2024_12_7.
+function getPapers_(titlePart){//<1
+  let lgt = obj2.length;
+  let entries = [];//Mdf
+  for(let k = 0; k < lgt; ++k){//<2.__________________________________BGN <LOOP.1>
+    let entry = obj2[k];
+    if( trcLev >= 2 ){//<3
+      console.log(`-- getPapers_()#2A:k=${k}, entry=`);
+      console.dir(entry);
+    }//3>
+    let title1 = entry['title'];
+    if( trcLev >= 2 ){//<3
+      console.log(`-- getPapers_()#2B:k=${k}, title1=${title1}`);//Tracing
+    }//3>
+    if( title1.match(titlePart) ){//<3
+      entries.push(entry);//New
+    }//3>
+  }//2>.______________________________________________________________END <LOOP.1>
+  if( trcLev >= 2 ){//<2
+    console.log('-- getPapers_()#3:entries=');
+    console.dir(entries);//Mdf
+  }//2>
+  return entries;
+}//1>
+//**********************************************************************
 //On 2024_11_23.
 function getPapers(){//<1
   let elmTitlePart = document.getElementById('titlePart');
   let titlePart = elmTitlePart.value;
   console.log(`-- getPapers()#1:titlePart=${titlePart}`);//Tracing.
   let lgt = obj2.length;
-  let entries = [];//Mdf
-  for(let k = 0; k < lgt; ++k){//<2.__________________________________BGN <LOOP.1>
-    let entry = obj2[k];
-    if( trcFlg ){//<3
-      console.log(`-- getPapers()#2A:k=${k}, entry=`);
-      console.dir(entry);
-    }//3>
-    let title1 = entry['title'];
-    if( trcFlg ){//<3
-      console.log(`-- getPapers()#2B:k=${k}, title1=${title1}`);//Tracing
-    }//3>
-    if( title1.match(titlePart) ){//<3
-      entries.push(entry);//New
-    }//3>
-  }//2>.______________________________________________________________END <LOOP.1>
-  if( trcFlg ){//<2
+  let entries = getPapers_(titlePart);//New
+  if( trcLev >= 2 ){//<2
     console.log('-- getPapers()#3:entries=');
     console.dir(entries);//Mdf
   }//2>
@@ -334,6 +356,35 @@ function getPapers(){//<1
   elmData2.innerHTML = htmlText;
 }//1>
 //**********************************************************************
+//On 2024_12_7.
+function detailed2B(){//<1
+  let elmTitlePart = document.getElementById('titlePart');
+  let titlePart = elmTitlePart.value;
+  console.log(`-- detailed2B()#1:titlePart=${titlePart}`);//Tracing.
+  let lgt = obj2.length;
+  let entries = getPapers_(titlePart);//New
+  if( trcLev >= 2 ){//<2
+    console.log('-- detailed2B()#3:entries=');
+    console.dir(entries);//Mdf
+  }//2>
+  let htmlText = '';
+  let lgt1 = entries.length;
+  for(let k = 0; k < lgt1; ++k){//<2._________________________________BGN <LOOP.1>
+    let entry = entries[k];
+    htmlText += `#${k+1}：` + JSON.stringify(entry) + '<br/>';
+    let paperId = entry.id;
+    let authors = getAuthors_(paperId);//New3
+    let lgt2 = authors.length;
+    for(let k2 = 0; k2 < lgt2; ++k2){//<3.____________________________BGN <LOOP.1.1>
+      let authorEntry = authors[k2];
+      let authorId = authorEntry.authorId;
+      let names = getNames_(authorId);
+      htmlText += `　A#${k2+1}：`+`authorId：${authorId}，`+JSON.stringify(names)+'<br/>';
+    }//>2.____________________________________________________________END <loop.1.1> 
+  }//>2.______________________________________________________________END <loop.1> 
+  elmData2.innerHTML = htmlText;
+}//1>
+//**********************************************************************
 //**********************************************************************
 //On 2024_12_6.
 function getPapers2_(authorId){//<1
@@ -341,23 +392,23 @@ function getPapers2_(authorId){//<1
   let entries = [];//Mdf
   for(let k = 0; k < lgt; ++k){//<2.__________________________________BGN <LOOP.1>
     let entry = obj3[k];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getPapers2_()#2A:k=${k}, entry=`);
       console.dir(entry);
     }//3>
     let authorId1 = entry['authorId'];
-    if( trcFlg ){//<3
+    if( trcLev >= 2 ){//<3
       console.log(`-- getPapers2_()#2B:k=${k}, authorId1=${authorId1}`);//Dummy  
     }//3>
     if( authorId1 === authorId ){//<3
-      if( trcFlg ){
+      if( trcLev >= 2 ){
         console.log(`-- getPapers2_()#1C:authorId=${authorId}, authorId1=${authorId1}`);
       }
       entries.push(entry);//New
       //break;//________________________________________________________EXT <LOOP.1>
     }//3>
   }//2>.______________________________________________________________END <LOOP.1>
-  if( trcFlg ){
+  if( trcLev >= 2 ){
     console.log('-- getPapers2_()#3:entries=');
     console.dir(entries);//New2
   }

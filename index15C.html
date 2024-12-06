@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+  <meta charset='UTF-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <link rel="icon" href="./favicon.ico"/>
+  <title>index15B</title>
+  <script type='text/javascript' src='./auth_pap_etc.js'></script>
+  <script type='text/javascript' src='./index15C.js'></script>
+</head>
+<body onload='init()'>
+  <h3>著者・文献の検索：</h3>
+  <!--**********************************************************************-->
+  <b>1．Authors：</b><br/>
+  Author-id#1：<input id='id' type='text'>
+  <button onclick='getNames()'>Get specified author</button><br/>
+  <!--======================================================================-->
+  Name-part：<input id='namePart' type='text'>
+  <button onclick='getNames2()'>Get matching authors</button>
+  <button onclick='detailedAuthors()'>Detailed1</button>
+  <br/>
+  <!--**********************************************************************-->
+  <b>2．Papers：</b><br/>
+  Paper-id#1：<input id='paperId' type='text'>
+  <button onclick='getPaper()'>Get specified paper</button>
+  <button onclick='detailed2()'>Detailed2</button>
+  <br/>
+  <!--======================================================================-->
+  Title-part：<input id='titlePart' type='text'>
+  <button onclick='getPapers()'>Get matching papers</button>
+  <br/>
+  <!--**********************************************************************-->
+  <b>3．AuthPapRel：</b><br/>
+  Author-id#2：<input id='authorId2' type='text'>
+  <button onclick='getPapers2()'>Get related papers</button>
+  <button onclick='detailed3()'>Detailed3</button>
+  <button onclick='detailed3A()'>Detailed3A</button>
+  <br/>
+  <!--======================================================================-->
+  Paper-id#2：<input id='paperId2' type='text'>
+  <button onclick='getAuthors()'>Get related authors</button>
+  <button onclick='detailed3B()'>Detailed3B</button>
+  <br/>
+  <!--**********************************************************************-->
+  <hr/>
+  <span>Result-data1：</span>
+  <button onclick='clear1()'>Clear1</button>
+  <div id='data1'></div>
+  <!--======================================================================-->
+  <span>Result-data1B：</span>
+  <button onclick='clear1B()'>Clear1B</button>
+  <div id='data1B'></div>
+  <hr/>
+  <!--======================================================================-->
+  <span>Result-data2：</span>
+  <button onclick='clear2()'>Clear2</button>
+  <div id='data2'></div>
+  <span>Result-data2B：</span>
+  <button onclick='clear2B()'>Clear2B</button>
+  <div id='data2B'></div>
+  <hr/>
+  <!--======================================================================-->
+  <span>Result-data3：</span>
+  <button onclick='clear3()'>Clear3</button>
+  <div id='data3'></div>
+  <span>Result-data3B：</span>
+  <button onclick='clear3B()'>Clear3B</button>
+  <div id='data3B'></div>
+  <hr/>
+</body>
+</html>
